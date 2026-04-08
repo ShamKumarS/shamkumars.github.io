@@ -206,40 +206,6 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-/* ===== Direct CV Download (hidden iframe, no new tab) ===== */
-function downloadCV(e) {
-  e.preventDefault();
-  const btn = e.currentTarget;
-  const orig = btn.innerHTML;
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing…';
-  btn.style.pointerEvents = 'none';
-
-  const old = document.getElementById('cv-dl-frame');
-  if (old) old.remove();
-
-  function restoreBtn() {
-    btn.innerHTML = orig;
-    btn.style.pointerEvents = '';
-    window.removeEventListener('message', onMsg);
-    const f = document.getElementById('cv-dl-frame');
-    if (f) setTimeout(() => f.remove(), 500);
-  }
-
-  function onMsg(evt) {
-    if (evt.data === 'resume-dl-done') restoreBtn();
-  }
-  window.addEventListener('message', onMsg);
-  // Fallback: restore after 35s if postMessage never arrives
-  setTimeout(restoreBtn, 35000);
-
-  const iframe = document.createElement('iframe');
-  iframe.id = 'cv-dl-frame';
-  iframe.name = 'resume-dl';
-  // Keep in viewport (top-left) but invisible — html2canvas needs rendered layout
-  iframe.style.cssText = 'position:fixed;top:0;left:0;width:900px;height:1400px;opacity:0;pointer-events:none;border:none;z-index:-9999;';
-  document.body.appendChild(iframe);
-  iframe.src = 'resume.html';
-}
 
 /* ===== LinkedIn Recommendations ===== */
 function openLinkedInProfile(profileId) {
