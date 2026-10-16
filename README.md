@@ -1,80 +1,24 @@
 # Sham Kumar Meghwar - Portfolio
 
-A modern, responsive portfolio website showcasing my work as an iOS and Flutter Developer.
+Portfolio of a Senior Mobile Engineer shipping native Android (Kotlin, Jetpack Compose), iOS (Swift, SwiftUI) and Flutter apps.
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, professional layout with beautiful animations
-- **Responsive**: Fully responsive design that works on all devices
-- **Interactive**: Smooth scrolling, hover effects, and dynamic animations
-- **Fast Loading**: Optimized for performance with modern web standards
-- **Accessible**: Built with accessibility best practices
+The site is written as the **release notes of a product called "Sham Kumar"**: career eras are versions, skills are linked frameworks, projects are builds, recommendations are ratings & reviews.
 
-## 🛠️ Technologies Used
+- **Boot log**: Xcode-style build output on first visit (once per session, click to skip)
+- **Build target switch**: All / Android / iOS / Flutter re-tints the site, filters frameworks, dims other-platform builds and swaps the headline (remembered per visitor)
+- **Particle name**: the hero name is drawn from particles that move away from the cursor or a finger
+- **Linked frameworks**: searchable, groupable skill index (⌘K / Ctrl+K to filter)
+- **Changelog**: the version number stays pinned and changes as you scroll through each era
+- **Builds**: vertical scroll moves the project shelf sideways on desktop (native swipe on mobile), with device frames that cycle through screenshots
+- **Reviews**: draggable card stack (also arrow keys and buttons)
+- Light/dark theme, honours `prefers-reduced-motion`, no frameworks or build step
 
-- **HTML5**: Semantic markup structure
-- **CSS3**: Modern styling with CSS Grid, Flexbox, and animations
-- **JavaScript**: Interactive features and smooth animations
-- **Font Awesome**: Icons for social links and UI elements
-- **Google Fonts**: Inter font family for modern typography
+## 🛠️ Structure
 
-## 📱 Sections
-
-1. **Hero Section**: Eye-catching introduction with animated elements
-2. **About**: Personal information and core skills
-3. **Experience**: Professional timeline with company details
-4. **Projects**: Interactive project gallery with filtering
-5. **Contact**: Contact information and social links
-
-## 🎨 Design Features
-
-- Gradient backgrounds and modern color scheme
-- Smooth scroll animations and transitions
-- Interactive project filtering (iOS/Flutter/All)
-- Responsive navigation with mobile hamburger menu
-- Typing animation for dynamic text
-- Parallax effects and floating shapes
-- Card-based layouts with hover effects
-
-## 📂 Project Structure
-
-```
-├── index.html          # Main HTML file
-├── css/
-│   └── resume.css      # Main stylesheet
-├── js/
-│   └── resume.js       # JavaScript functionality
-├── img/                # Project screenshots and images
-├── vendor/             # Third-party libraries
-└── README.md           # This file
-```
-
-## 🚀 Getting Started
-
-1. Clone or download the repository
-2. Open `index.html` in a web browser
-3. The portfolio is ready to view!
-
-## 📱 Mobile Responsive
-
-The portfolio is fully responsive and optimized for:
-- Desktop (1200px+)
-- Tablet (768px - 1199px)
-- Mobile (320px - 767px)
-
-## 🎯 Performance
-
-- Optimized images and assets
-- Minimal JavaScript for fast loading
-- CSS animations with hardware acceleration
-- Smooth 60fps animations
-
-## 📧 Contact
-
-- **Email**: ksham1999@gmail.com
-- **LinkedIn**: [linkedin.com/in/kumarsham](https://www.linkedin.com/in/kumarsham/)
-- **GitHub**: [github.com/ShamKumarS](https://github.com/ShamKumarS)
-
----
-
-© 2024 Sham Kumar Meghwar. All rights reserved.
+- `index.html`: all content
+- `assets/style.css`: design tokens and layout
+- `assets/app.js`: interactions (vanilla JS, no dependencies)
+- `resume/`: downloadable résumés (Mobile: Android · iOS · Flutter, and iOS-only). `Sham_Kumar.pdf` at the root is a copy of the Mobile résumé so old links keep working
+- `assets/shots/`: web-optimised screenshots (originals stay in `img/`)

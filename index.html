@@ -1,1200 +1,583 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang="en" data-theme="dark" data-platform="all">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description"
-    content="Sham Kumar Meghwar — Senior iOS & Flutter Engineer with around 5 years of experience building production-grade mobile apps. Available for remote and freelance work.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sham Kumar — Release Notes</title>
+  <meta name="description" content="Sham Kumar Meghwar — Senior Mobile Engineer shipping native Android (Kotlin, Jetpack Compose), iOS (Swift, SwiftUI) and Flutter apps. 5+ years across healthcare, IoT, fintech, e-commerce and mobility.">
+  <meta name="keywords" content="Mobile Engineer, Android Developer, iOS Developer, Flutter Developer, Kotlin, Jetpack Compose, Swift, SwiftUI, Remote Developer, Freelance">
   <meta name="author" content="Sham Kumar Meghwar">
-  <meta name="keywords"
-    content="iOS Developer, Flutter Developer, Swift, SwiftUI, Mobile App Development, Software Engineer, Remote Developer, Freelance">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Sham Kumar Meghwar — Senior iOS & Flutter Engineer">
-  <meta property="og:description"
-    content="Senior iOS & Flutter Engineer with around 5 years delivering production-grade mobile apps. Available for remote and freelance work.">
-  <meta property="og:image" content="img/profile_with_circle.jpg">
+  <meta property="og:title" content="Sham Kumar — Senior Mobile Engineer (Android · iOS · Flutter)">
+  <meta property="og:description" content="Native Android and iOS, plus Flutter when one codebase fits. 5+ years shipping production mobile apps.">
   <meta property="og:type" content="website">
-
-  <title>Sham Kumar Meghwar — Senior iOS & Flutter Engineer</title>
-  <link rel="icon" href="img/profile_with_circle.jpg">
-
-  <!-- Fonts -->
+  <meta property="og:url" content="https://shamkumars.github.io/">
+  <meta property="og:image" content="https://shamkumars.github.io/assets/profile.jpg">
+  <meta name="theme-color" content="#0d0d0b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23ff5a2a'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%230d0d0b'%3ESK%3C/text%3E%3C/svg%3E">
+  <script>
+    try {
+      var t = localStorage.getItem('sk-theme'); if (t) document.documentElement.dataset.theme = t;
+      var p = localStorage.getItem('sk-platform'); if (p) document.documentElement.dataset.platform = p;
+    } catch (e) {}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/5feda7279d.js" crossorigin="anonymous"></script>
-
-  <!-- Devicons -->
-  <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-  <link href="vendor/devicons/new/css/devicon.min.css" rel="stylesheet">
-
-  <!-- Styles -->
-  <link href="css/resume.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
+<body>
 
-<body id="page-top">
+  <!-- ───────── Boot log ───────── -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <div class="boot__inner">
+      <pre class="boot__log" id="bootLog"></pre>
+      <div class="boot__bar"><span id="bootBar"></span></div>
+      <p class="boot__skip">click anywhere to skip</p>
+    </div>
+  </div>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <a href="#home" class="nav-logo-link">
-          <img src="img/profile_with_circle.jpg" alt="Sham Kumar" class="nav-logo-img">
-          <span class="nav-logo-text">Sham Kumar</span>
+  <div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ───────── Toolbar ───────── -->
+  <header class="bar" id="bar">
+    <a class="bar__mark" href="#top" aria-label="Back to top">
+      <span class="bar__icon">SK</span>
+      <span class="bar__name">Sham&nbsp;Kumar<em>.app</em></span>
+    </a>
+    <nav class="bar__nav" aria-label="Sections">
+      <a href="#notes" data-target="notes"><i>01</i>What's New</a>
+      <a href="#frameworks" data-target="frameworks"><i>02</i>Frameworks</a>
+      <a href="#changelog" data-target="changelog"><i>03</i>Changelog</a>
+      <a href="#builds" data-target="builds"><i>04</i>Builds</a>
+      <a href="#reviews" data-target="reviews"><i>05</i>Reviews</a>
+      <a href="#submit" data-target="submit"><i>06</i>Contact</a>
+    </nav>
+    <div class="bar__actions">
+      <span class="bar__status" id="buildStatus" aria-hidden="true">Building… 0%</span>
+      <button class="iconbtn" id="themeToggle" type="button" aria-label="Toggle color theme">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7a5 5 0 0 1 0 10z" fill="currentColor"/></svg>
+      </button>
+      <details class="dl" id="dlMenu">
+        <summary class="btn btn--small">Résumé ↓</summary>
+        <div class="dl__menu">
+          <p class="mono">Pick the build that fits the role</p>
+          <a href="resume/Sham_Kumar_Senior_Mobile_Developer.pdf" download>
+            <b>Mobile Engineer</b><span>Android · iOS · Flutter</span><i class="mono">PDF ↓</i>
+          </a>
+          <a href="resume/Sham_Kumar_iOS.pdf" download>
+            <b>iOS Engineer</b><span>Swift · SwiftUI · UIKit</span><i class="mono">PDF ↓</i>
+          </a>
+        </div>
+      </details>
+    </div>
+    <div class="bar__progress"><span id="progress"></span></div>
+  </header>
+
+  <main>
+
+    <!-- ───────── Hero ───────── -->
+    <section class="hero" id="top">
+      <div class="hero__meta mono">
+        <span>Release notes</span>
+        <span>Sham Kumar Meghwar</span>
+        <span>Version 4.0 <b>(2026.10)</b></span>
+      </div>
+
+      <div class="hero__stage" id="heroStage">
+        <h1 class="hero__name" id="heroName">Sham Kumar</h1>
+        <canvas class="hero__canvas" id="heroCanvas" aria-hidden="true"></canvas>
+        <p class="hero__hint mono" aria-hidden="true">move your cursor through the name ↗</p>
+      </div>
+
+      <div class="hero__foot">
+        <div class="hero__lede">
+          <p class="hero__role">Senior Mobile Engineer · Android · iOS · Flutter</p>
+          <p class="hero__text">
+            I build native apps in <span class="serif">Kotlin</span> and <span class="serif">Swift</span>, and use
+            <span class="serif">Flutter</span> when one codebase fits. Currently shipping
+            <span class="rotator" id="rotator" aria-live="polite">OneAI&nbsp;Health</span>
+          </p>
+          <div class="hero__cta">
+            <a class="btn btn--accent magnetic" href="#submit">Start a project</a>
+            <a class="btn magnetic" href="#notes">Read the release notes ↓</a>
+          </div>
+        </div>
+        <div class="hero__side">
+          <div class="target" role="group" aria-label="Build target: filter the site by platform">
+            <span class="target__label mono">Target</span>
+            <button type="button" data-p="all">All</button>
+            <button type="button" data-p="android">Android</button>
+            <button type="button" data-p="ios">iOS</button>
+            <button type="button" data-p="flutter">Flutter</button>
+          </div>
+          <dl class="hero__stats">
+            <div><dt>Years</dt><dd><span data-count="5">0</span>+</dd></div>
+            <div><dt>Platforms</dt><dd><span data-count="3">0</span></dd></div>
+            <div><dt>Projects</dt><dd><span data-count="10">0</span>+</dd></div>
+            <div><dt>Apps live</dt><dd><span data-count="5">0</span>+</dd></div>
+            <div class="hero__avail"><dt>Status</dt><dd><i class="pulse"></i>Available: remote · freelance · contract</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── What's New ───────── -->
+    <section class="section notes" id="notes">
+      <div class="section__head">
+        <p class="eyebrow mono"><i>01</i> What's New</p>
+        <h2 class="display">What's new in <span class="serif">version&nbsp;4.0</span></h2>
+      </div>
+
+      <div class="notes__grid">
+        <aside class="notes__card" data-reveal>
+          <div class="idcard" id="idcard">
+            <div class="idcard__top mono"><span>Developer ID</span><span>●&nbsp;Verified</span></div>
+            <img src="assets/profile.jpg" alt="Portrait of Sham Kumar Meghwar" width="640" height="640" loading="lazy">
+            <div class="idcard__body">
+              <strong>Sham Kumar Meghwar</strong>
+              <span>Senior Mobile Engineer · Evolve Edge</span>
+              <span class="mono">Pakistan · Open to remote roles</span>
+            </div>
+            <div class="idcard__plat mono">
+              <span class="p-a">Android</span><span class="p-i">iOS</span><span class="p-f">Flutter</span>
+            </div>
+            <div class="idcard__core">
+              <span>Kotlin</span><span>Compose</span><span>Coroutines</span><span>Swift</span><span>SwiftUI</span><span>UIKit</span><span>Dart</span><span>BLoC</span><span>Firebase</span><span>Clean Arch.</span>
+            </div>
+          </div>
+        </aside>
+
+        <ol class="notes__list">
+          <li data-reveal>
+            <h3>Now shipping Android <em>and</em> iOS at Evolve Edge</h3>
+            <p>I own feature delivery on both platforms of <b>OneAI Health</b>, a production healthcare product: Kotlin and Jetpack Compose on Android, SwiftUI on iOS, kept in feature parity. I also lead <b>Dry Revival</b> end to end on iOS.</p>
+          </li>
+          <li data-reveal>
+            <h3>One engineer, three platforms</h3>
+            <p>Native Android (Kotlin, Compose, Coroutines/Flow, Koin), native iOS (Swift, SwiftUI, UIKit, Combine) and Flutter (BLoC, GetIt, GoRouter), shipped to Google Play and the App Store over 5+ years in healthcare, IoT, fintech, e-commerce and mobility.</p>
+          </li>
+          <li data-reveal>
+            <h3>Talks to hardware</h3>
+            <p>Barcode &amp; QR scanning, camera capture with on-device face detection, GPS, BLE wearables, smart scales and solar controllers, plus Health Connect and HealthKit data.</p>
+          </li>
+          <li data-reveal>
+            <h3>Secure by default</h3>
+            <p>OWASP Mobile Top 10, Keychain and Android Keystore, encrypted storage, SSL pinning, HIPAA patterns, and pen-test remediation that passed a clean re-audit.</p>
+          </li>
+          <li data-reveal>
+            <h3>Releases on rails</h3>
+            <p>GitHub Actions builds and tests every PR. Dev builds go out through Firebase App Distribution, releases move through Google Play tracks and TestFlight, and Sentry and Crashlytics watch production.</p>
+          </li>
+          <li data-reveal>
+            <h3>Mentor &amp; documenter</h3>
+            <p>I've mentored 2 junior engineers, both promoted within 6 months. I write architecture notes, data-flow docs and release runbooks, and contribute on Stack Overflow.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────── Frameworks ───────── -->
+    <section class="section frameworks" id="frameworks">
+      <div class="section__head section__head--split">
+        <div>
+          <p class="eyebrow mono"><i>02</i> Linked Frameworks</p>
+          <h2 class="display"><span id="fwCount">0</span> frameworks, <span class="serif">three platforms.</span></h2>
+        </div>
+        <div class="fw__tools">
+          <div class="target target--small" role="group" aria-label="Build target">
+            <button type="button" data-p="all">All</button>
+            <button type="button" data-p="android">Android</button>
+            <button type="button" data-p="ios">iOS</button>
+            <button type="button" data-p="flutter">Flutter</button>
+          </div>
+          <label class="search mono">
+            <span aria-hidden="true">⌘K</span>
+            <input id="fwSearch" type="search" placeholder="filter frameworks…" autocomplete="off" aria-label="Filter frameworks">
+          </label>
+        </div>
+      </div>
+
+      <div class="fw">
+        <ul class="fw__groups mono" id="fwGroups" aria-label="Framework groups"></ul>
+        <div class="fw__field" id="fwField">
+          <!-- Chips are built from these lists by JS. data-p = platform letters (a=Android, i=iOS, f=Flutter);
+               a chip may override with "Name|ai". Readable without JS too. -->
+          <div class="fw__src" data-group="Languages" data-p="aif">Kotlin|a, Swift|i, Dart|f, Java|a, Objective-C|i, Python</div>
+          <div class="fw__src" data-group="Android" data-p="a">Android SDK, Android Studio, Jetpack Compose, Navigation, ViewModel, Lifecycle, Material 3, Coroutines / Flow, Retrofit / OkHttp, Koin DI, kotlinx.serialization, Gson, CameraX, ML Kit, Health Connect, BiometricPrompt</div>
+          <div class="fw__src" data-group="iOS / Apple SDK" data-p="i">SwiftUI, UIKit, Xcode, Core Data, SwiftData, AVFoundation, Vision, HealthKit, StoreKit 2, WidgetKit, TipKit, CoreBluetooth, Core Location, MapKit, Swift Charts, Core Animation, EventKit, CloudKit, Face ID / Touch ID</div>
+          <div class="fw__src" data-group="Concurrency" data-p="i">Coroutines / Flow|a, Swift Concurrency, async/await, Actors, Combine, RxSwift, GCD, Operation Queues</div>
+          <div class="fw__src" data-group="Flutter" data-p="f">Flutter, BLoC, Riverpod, GetIt DI, GoRouter, Dio, Freezed, Lottie, Material / Cupertino</div>
+          <div class="fw__src" data-group="Architecture" data-p="aif">Clean Architecture, MVVM, MVVM-C|i, VIPER|i, MVP, MVC, Modular SDKs, Dependency Injection, Offline-first data layer, Repository pattern</div>
+          <div class="fw__src" data-group="Device Integration" data-p="aif">Barcode &amp; QR, Camera capture, Face detection, Biometric auth, GPS &amp; Location, Google Maps|a, Bluetooth / BLE (GATT), Smart scales, Wearables, IoT sensors</div>
+          <div class="fw__src" data-group="Data &amp; Networking" data-p="aif">REST APIs, JSON, GraphQL, WebSockets, OpenAPI, Offline sync, Caching, Background sync, URLSession|i, Alamofire|i</div>
+          <div class="fw__src" data-group="Testing" data-p="aif">JUnit|a, MockK|a, Turbine|a, MockWebServer|a, Espresso|a, Compose UI Testing|a, XCTest / XCUITest|i, TDD, Regression testing, Performance testing</div>
+          <div class="fw__src" data-group="Debugging" data-p="aif">Firebase Crashlytics, Sentry, Android Profiler|a, Instruments|i, Chucker|a, Timber|a, ANR analysis|a, Memory-leak analysis</div>
+          <div class="fw__src" data-group="DevOps &amp; Release" data-p="aif">Git, GitHub, GitLab, Bitbucket, GitHub Actions, Fastlane, Gradle|a, Xcode Cloud|i, Firebase App Distribution, Google Play Console|af, TestFlight|if, App Store Connect|if, Jira, ClickUp</div>
+          <div class="fw__src" data-group="Security" data-p="aif">OWASP Mobile Top 10, Encryption, Keychain|i, Android Keystore|a, SSL / Cert pinning, Token handling, Pen-test remediation, HIPAA patterns</div>
+          <div class="fw__src" data-group="Firebase &amp; Payments" data-p="aif">Firebase, FCM, APNs|i, Stripe, Apple Pay|i, StoreKit subscriptions|i, VR Payment|i</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── Changelog ───────── -->
+    <section class="section changelog" id="changelog">
+      <div class="section__head">
+        <p class="eyebrow mono"><i>03</i> Changelog</p>
+        <h2 class="display">Every version, <span class="serif">shipped.</span></h2>
+      </div>
+
+      <div class="cl">
+        <aside class="cl__rail" aria-hidden="true">
+          <div class="cl__sticky">
+            <span class="cl__v mono">v</span>
+            <span class="cl__num" id="clNum">4.0</span>
+            <span class="cl__era mono" id="clEra">Evolve Edge · 2026 → now</span>
+            <div class="cl__track"><span id="clFill"></span></div>
+          </div>
+        </aside>
+
+        <div class="cl__entries">
+
+          <article class="release" data-version="4.0" data-era="Evolve Edge · 2026 → now">
+            <header class="release__head" data-reveal>
+              <span class="release__tag mono">v4.0 · Current</span>
+              <h3>Senior Mobile Engineer, Android &amp; iOS <span>@ Evolve Edge Technologies</span></h3>
+              <p class="mono">Apr 2026 → Present · Remote, Pakistan</p>
+            </header>
+
+            <div class="product" data-reveal>
+              <h4>OneAI Health <small>AI-powered healthcare · Android &amp; iOS · Production</small></h4>
+              <ul>
+                <li><b class="t t--ship">Android</b><span><strong>Android ownership.</strong> I develop, maintain and optimize the Android app in Kotlin and Jetpack Compose on MVVM/Clean Architecture with Coroutines/Flow, Retrofit/OkHttp and Koin DI, keeping it in feature parity with iOS.</span></li>
+                <li><b class="t t--ship">Shipped</b><span><strong>Cross-platform delivery.</strong> Features across <em class="m">35+ SwiftUI screens</em> and their Compose counterparts, turning Figma and business requirements into reliable mobile solutions with the tech lead, backend, QA and design.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Device &amp; sensors.</strong> Barcode/QR scanning (CameraX + ML Kit, AVFoundation), camera capture with on-device face detection (ML Kit, Vision), GPS (Fused Location, Core Location), BLE wearables, and Health Connect / HealthKit.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Backend integration.</strong> REST APIs from the OpenAPI contract with lenient JSON decoding, token refresh/rotation and caching for intermittent connectivity. Custom charts for steps, sleep, heart rate and HRV.</span></li>
+                <li><b class="t t--imp">Improved</b><span><strong>CI/CD.</strong> GitHub Actions builds and tests every PR, Firebase App Distribution handles dev builds, and releases are promoted through Google Play internal/beta/production tracks, with TestFlight and App Store Connect on iOS.</span></li>
+                <li><b class="t t--sec">Secured</b><span><strong>Quality &amp; security.</strong> JUnit, MockK, Turbine and MockWebServer tests, Sentry monitoring, plus secure storage, encrypted data and SSL pinning following OWASP Mobile and HIPAA practices.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>Dry Revival <small>Wellness &amp; recovery · iOS · App Store live</small></h4>
+              <ul>
+                <li><b class="t t--ship">Shipped</b><span><strong>Ownership.</strong> I lead end-to-end development with SwiftUI and Clean Architecture, managing App Store releases and TestFlight distribution.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Hardware.</strong> Integrated the Lefu Smart Scale over Bluetooth LE to capture real-time body measurements and visualize progress in custom charts.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Monetization.</strong> StoreKit 2 subscriptions, server-side receipt validation, paywall flows and purchase restoration to support recurring revenue.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="release" data-version="3.0" data-era="ILI.DIGITAL · 2023 → 2026">
+            <header class="release__head" data-reveal>
+              <span class="release__tag mono">v3.0</span>
+              <h3>Software Engineer, Mobile (iOS &amp; Flutter) <span>@ <a href="https://ili.digital/" target="_blank" rel="noopener">ILI.DIGITAL</a></span></h3>
+              <p class="mono">Sep 2023 → Apr 2026 · Lahore, Pakistan</p>
+            </header>
+
+            <div class="product" data-reveal>
+              <h4>KSC App <small>Event &amp; commerce platform · Swift / UIKit</small></h4>
+              <ul>
+                <li><b class="t t--imp">Improved</b><span><strong>Performance.</strong> Cut API requests per screen from 7–8 to 1–2 through endpoint optimization and response caching, improving load times by <em class="m">~60%</em> and eliminating timeout failures.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Offline &amp; location.</strong> Core Data offline storage with background sync, plus geolocation push and deep linking (Emarsys SDK), increasing engagement by <em class="m">35%</em>.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Checkout.</strong> One-tap MiniShop checkout on the VR-Payment gateway with secure token handling, reducing cart abandonment.</span></li>
+                <li><b class="t t--sec">Fixed</b><span><strong>Security.</strong> Remediated SSL pinning, token-handling and storage findings from an external pen-test, then passed a clean re-audit.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>StayX <small>Gamified learning · Flutter · Android &amp; iOS</small></h4>
+              <ul>
+                <li><b class="t t--ship">Shipped</b><span><strong>Cross-platform architecture.</strong> BLoC state management with GetIt DI and Freezed, Dio interceptors and GoRouter navigation. Shipped to <em class="m">Google Play and the App Store</em> with zero navigation regressions after launch.</span></li>
+                <li><b class="t t--lead">Lead</b><span><strong>Technical leadership.</strong> Delivered <em class="m">30%</em> of mobile development in a 5-person team, led weekly code reviews, enforced TDD, and mentored 2 juniors who were both promoted within 6 months.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>Volocopter <small>Urban air mobility booking · iOS · Remote, Germany (via ILI.DIGITAL) · Sep 2023 – Feb 2024</small></h4>
+              <ul>
+                <li><b class="t t--ship">Shipped</b><span><strong>Architecture.</strong> Booking features in Swift, UIKit and SwiftUI on Clean Architecture and modular SDKs, integrating REST APIs and Core Data.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Reuse.</strong> Contributed to a shared UI component SDK used across multiple apps for a consistent UX and faster feature work.</span></li>
+                <li><b class="t t--imp">Improved</b><span><strong>Quality &amp; Agile.</strong> TDD with XCTest unit and UI tests for critical booking flows, in an international Scrum team with backend, DevOps, product and design.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="release" data-version="2.0" data-era="BrainX · 2021 → 2023">
+            <header class="release__head" data-reveal>
+              <span class="release__tag mono">v2.0</span>
+              <h3>Software Engineer, iOS <span>@ <a href="https://www.brainxtech.com/" target="_blank" rel="noopener">BrainX Technologies</a></span></h3>
+              <p class="mono">Nov 2021 → Aug 2023 · Lahore, Pakistan</p>
+            </header>
+
+            <div class="product" data-reveal>
+              <h4>Go Power <small>Real-time IoT solar monitor</small></h4>
+              <ul>
+                <li><b class="t t--imp">Improved</b><span><strong>BLE.</strong> Real-time Bluetooth 5.0/BLE solar-controller monitoring, optimizing GATT communication to cut data latency by <em class="m">~35%</em> and improve sync over intermittent connections.</span></li>
+                <li><b class="t t--imp">Improved</b><span><strong>Performance.</strong> Profiled and fixed memory and rendering bottlenecks with Instruments, improving user satisfaction scores by <em class="m">20%</em>.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>Driven Day <small>Productivity planner · UIKit / MVVM</small></h4>
+              <ul>
+                <li><b class="t t--ship">Shipped</b><span><strong>Features.</strong> <em class="m">50+</em> UIKit screens under MVVM with Google Calendar and iCloud sync, boosting cross-platform engagement by 35%.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Offline-first.</strong> Core Data persistence kept every feature working without a connection.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>Also in this release</h4>
+              <ul>
+                <li><b class="t t--imp">Improved</b><span><strong>Feedback SDK.</strong> Extended theming APIs and wrote developer docs, raising internal adoption by <em class="m">20%</em> across 4 projects.</span></li>
+                <li><b class="t t--ship">Shipped</b><span><strong>SHCD.</strong> Camera- and image-based vehicle buy/sell listings with Stripe payments.</span></li>
+                <li><b class="t t--ship">Shipped</b><span><strong>BH4H.</strong> An offline-first guided meditation app, end to end.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Baritastic.</strong> Legacy Objective-C maintenance and full Spanish localization.</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="release release--initial" data-version="1.0" data-era="Sukkur IBA · 2017 → 2021">
+            <header class="release__head" data-reveal>
+              <span class="release__tag mono">v1.0 · Initial release</span>
+              <h3>B.S. Computer Science <span>@ Sukkur IBA University</span></h3>
+              <p class="mono">Jan 2017 → May 2021 · Pakistan</p>
+            </header>
+            <div class="product" data-reveal>
+              <h4>Compiled from</h4>
+              <div class="chips">
+                <span>Algorithms</span><span>Data Structures</span><span>Operating Systems</span><span>Artificial Intelligence</span><span>Data Science</span><span>Database Systems</span><span>OOP &amp; Design Patterns</span>
+              </div>
+            </div>
+            <div class="product" data-reveal>
+              <h4>Achievements unlocked</h4>
+              <ul>
+                <li><b class="t t--lead">Award</b><span><strong>OGDCL National Talent Hunt Scholar.</strong> Selected among the <em class="m">top 100 of 5,000+</em> applicants nationwide for a fully funded bachelor's scholarship.</span></li>
+                <li><b class="t t--lead">Award</b><span><strong>Math Olympiad Runner-Up</strong> at Sukkur IBA University, leading a 4-member team to 2nd place.</span></li>
+                <li><b class="t t--add">Event</b><span><strong>iCOMET</strong>, the International Conference on Computing, Mathematics &amp; Engineering Technologies (participant).</span></li>
+              </ul>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── Builds ───────── -->
+    <section class="builds" id="builds">
+      <div class="builds__pin">
+        <div class="builds__head">
+          <div>
+            <p class="eyebrow mono"><i>04</i> Builds</p>
+            <h2 class="display">Selected <span class="serif">builds.</span></h2>
+          </div>
+          <div class="builds__meter mono" aria-hidden="true">
+            <div><b id="buildIdx">01</b> / <span id="buildTotal">08</span> · scroll →</div>
+            <div class="builds__bar"><span id="buildBar"></span></div>
+          </div>
+        </div>
+
+        <div class="builds__track" id="buildTrack">
+
+          <article class="build" data-p="ai">
+            <div class="build__meta mono"><span>Build 01</span><span class="status status--live">Android · iOS</span></div>
+            <div class="phone" data-shots="OneAI-1"></div>
+            <h3>OneAI Health</h3>
+            <p>Production AI healthcare app, which I own on both platforms: Kotlin and Jetpack Compose on Android, SwiftUI on iOS. It covers device sensors, wearables, health data and HIPAA-grade security.</p>
+            <ul class="tags mono"><li>Kotlin</li><li>Compose</li><li>SwiftUI</li><li>ML Kit</li><li>BLE</li></ul>
+            <a class="build__link" href="https://apps.apple.com/us/app/oneai-health/id6503261405" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build" data-p="i">
+            <div class="build__meta mono"><span>Build 02</span><span class="status status--live">iOS</span></div>
+            <div class="phone" data-shots="DryRevival-1"></div>
+            <h3>Dry Revival</h3>
+            <p>Wellness &amp; recovery app, built end to end in SwiftUI with Clean Architecture. It has a BLE smart-scale integration and StoreKit 2 subscriptions with server-side validation.</p>
+            <ul class="tags mono"><li>SwiftUI</li><li>Clean Arch.</li><li>StoreKit 2</li><li>BLE</li></ul>
+            <a class="build__link" href="https://apps.apple.com/us/app/dry-revival-app/id6471397467" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build" data-p="f">
+            <div class="build__meta mono"><span>Build 03</span><span class="status status--live">Flutter · Android · iOS</span></div>
+            <div class="phone" data-shots="StayX-1,StayX-2,StayX-3,StayX-4,StayX-5,StayX-6"></div>
+            <h3>StayX</h3>
+            <p>Gamified microlearning that turns workplace training into an adventure. One Flutter codebase shipped to Google Play and the App Store.</p>
+            <ul class="tags mono"><li>Flutter</li><li>BLoC</li><li>GoRouter</li><li>Lottie</li></ul>
+            <a class="build__link" href="https://apps.apple.com/pk/app/stayx/id6746411124" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build" data-p="i">
+            <div class="build__meta mono"><span>Build 04</span><span class="status status--live">iOS</span></div>
+            <div class="phone" data-shots="KSC-1,KSC-2,KSC-3,KSC-4,KSC-5,KSC-6"></div>
+            <h3>KSC</h3>
+            <p>Sports and commerce platform rebuilt in UIKit, with VR-Payment checkout, geolocation-triggered push, offline tickets and pen-test hardening.</p>
+            <ul class="tags mono"><li>UIKit</li><li>MVVM</li><li>Core Data</li><li>Emarsys</li></ul>
+            <a class="build__link" href="https://apps.apple.com/pk/app/ksc-app/id1417115202" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build" data-p="i">
+            <div class="build__meta mono"><span>Build 05</span><span class="status status--live">iOS</span></div>
+            <div class="phone" data-shots="GoPower-1,GoPower-2,GoPower-3,GoPower-4,GoPower-5,GoPower-6,GoPower-7,GoPower-8"></div>
+            <h3>Go Power</h3>
+            <p>IoT app for solar controllers: BLE connectivity, real-time monitoring, firmware updates and battery health tracking.</p>
+            <ul class="tags mono"><li>Swift</li><li>CoreBluetooth</li><li>BLE 5.0</li><li>IoT</li></ul>
+            <a class="build__link" href="https://apps.apple.com/us/app/go-power-connect/id1414570273" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build build--wide" data-p="i">
+            <div class="build__meta mono"><span>Build 06</span><span class="status">Web + iOS</span></div>
+            <div class="screen" data-shots="Driven_Day-1,Driven_Day-2,Driven_Day-3,Driven_Day-4"></div>
+            <h3>Driven Day</h3>
+            <p>Digital day planner with task management, smart reminders, calendar integration and document attachments, in standard and religious modes.</p>
+            <ul class="tags mono"><li>UIKit</li><li>MVVM</li><li>Core Data</li><li>iCloud</li></ul>
+            <a class="build__link" href="https://www.drivenday.com/" target="_blank" rel="noopener">Website ↗</a>
+          </article>
+
+          <article class="build" data-p="i">
+            <div class="build__meta mono"><span>Build 07</span><span class="status status--live">iOS</span></div>
+            <div class="phone" data-shots="SHCD-1,SHCD-2,SHCD-3,SHCD-4,SHCD-5"></div>
+            <h3>Second Hand Car Dealer</h3>
+            <p>Marketplace for pre-owned vehicles with camera-based listings, advanced filters and secure Stripe payments.</p>
+            <ul class="tags mono"><li>UIKit</li><li>Stripe</li><li>Alamofire</li></ul>
+            <a class="build__link" href="https://apps.apple.com/pk/app/second-hand-car-dealr/id1622799017" target="_blank" rel="noopener">App Store ↗</a>
+          </article>
+
+          <article class="build" data-p="i">
+            <div class="build__meta mono"><span>Build 08</span><span class="status">Private · iOS</span></div>
+            <div class="phone" data-shots="FeedbackSDK-1,FeedbackSDK-2,FeedbackSDK-3,FeedbackSDK-4,FeedbackSDK-5,FeedbackSDK-6,FeedbackSDK-7"></div>
+            <h3>Feedback SDK</h3>
+            <p>Private Swift package &amp; CocoaPod that collects feedback as text, audio, video and images, with full localization.</p>
+            <ul class="tags mono"><li>Swift</li><li>SPM</li><li>CocoaPods</li><li>i18n</li></ul>
+            <span class="build__link build__link--muted">Private package</span>
+          </article>
+
+          <article class="build build--end" data-p="aif">
+            <p class="mono">End of list</p>
+            <h3>Want yours <span class="serif">on this shelf?</span></h3>
+            <a class="btn btn--accent magnetic" href="#submit">Let's talk →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── Reviews ───────── -->
+    <section class="section reviews" id="reviews">
+      <div class="section__head section__head--split">
+        <div>
+          <p class="eyebrow mono"><i>05</i> Ratings &amp; Reviews</p>
+          <h2 class="display">What teammates <span class="serif">say.</span></h2>
+        </div>
+        <a class="btn magnetic" href="https://www.linkedin.com/in/kumarsham/details/recommendations/?detailScreenTabIndex=0" target="_blank" rel="noopener">See all on LinkedIn ↗</a>
+      </div>
+
+      <div class="rv">
+        <div class="rv__score">
+          <span class="rv__big">5.0</span>
+          <span class="mono">out of 5</span>
+          <div class="rv__bars mono" aria-label="Rating distribution: all four ratings are five stars">
+            <div><span>★★★★★</span><i style="--w:100%"></i></div>
+            <div><span>★★★★</span><i style="--w:0%"></i></div>
+            <div><span>★★★</span><i style="--w:0%"></i></div>
+            <div><span>★★</span><i style="--w:0%"></i></div>
+            <div><span>★</span><i style="--w:0%"></i></div>
+          </div>
+          <span class="mono rv__n">4 Ratings · LinkedIn</span>
+        </div>
+
+        <div class="rv__stage">
+          <div class="rv__stack" id="rvStack">
+            <figure class="review">
+              <div class="review__top"><span class="stars" aria-label="5 stars">★★★★★</span><span class="mono">Apr 2025</span></div>
+              <h3>High precision and creativity</h3>
+              <blockquote>Sham made a significant contribution to the success of the KSC App by implementing both the design and core functionalities with high precision and creativity. His ability to translate UI/UX designs into responsive, user-friendly interfaces is outstanding. He is highly reliable, quick to understand requirements, and proactive in finding efficient and elegant solutions.</blockquote>
+              <figcaption><img src="img/Colleagues/pascal.jpeg" alt="" width="40" height="40" loading="lazy"><span><b>Pascal Scherrer</b>Senior Developer &amp; Projektleiter</span></figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review__top"><span class="stars" aria-label="5 stars">★★★★★</span><span class="mono">Jul 2024</span></div>
+              <h3>Exceptional skill and dedication</h3>
+              <blockquote>Sham has showcased exceptional skill and dedication, particularly in developing our flight booking app. His expertise in iOS development is reflected in the app's intuitive design and robust functionality. His friendly personality and open mindset make him a joy to work with.</blockquote>
+              <figcaption><img src="img/Colleagues/Mahmoud.jpeg" alt="" width="40" height="40" loading="lazy"><span><b>Mahmoud Aoata</b>Software Engineer · Mobile Lead</span></figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review__top"><span class="stars" aria-label="5 stars">★★★★★</span><span class="mono">Jan 2024</span></div>
+              <h3>Truly commendable</h3>
+              <blockquote>I had the pleasure of working closely with him on the Volocopter Customer App, and his technical expertise and commitment to delivering high-quality solutions are truly commendable. His ability to tackle complex requirements and his positive, collaborative approach make him a valuable asset to any team.</blockquote>
+              <figcaption><img src="img/Colleagues/Konrad.jpeg" alt="" width="40" height="40" loading="lazy"><span><b>Konrad Schmid</b>iOS Developer at Helsana</span></figcaption>
+            </figure>
+            <figure class="review">
+              <div class="review__top"><span class="stars" aria-label="5 stars">★★★★★</span><span class="mono">Jan 2024</span></div>
+              <h3>Above what was requested</h3>
+              <blockquote>I had the chance to work with Sham within my time at Volocopter to create the future customer app. Sham was always polite and really focused on getting things done and finding solutions above what was requested. I would recommend him to everyone searching for a good character &amp; a reliable developer!</blockquote>
+              <figcaption><img src="img/Colleagues/Paalo.jpeg" alt="" width="40" height="40" loading="lazy"><span><b>Paalo Dewitz</b>Head of Product Customization</span></figcaption>
+            </figure>
+          </div>
+          <div class="rv__ctrl mono">
+            <button type="button" class="iconbtn" id="rvPrev" aria-label="Previous review">←</button>
+            <span><b id="rvIdx">1</b> / 4 · drag the card</span>
+            <button type="button" class="iconbtn" id="rvNext" aria-label="Next review">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── Submit ───────── -->
+    <section class="section submit" id="submit">
+      <p class="eyebrow mono"><i>06</i> Submit for Review</p>
+      <h2 class="submit__title">Got an app <span class="serif">that needs shipping?</span></h2>
+
+      <div class="submit__mail">
+        <a href="mailto:ksham1999@gmail.com" class="mail" id="mail">ksham1999@gmail.com</a>
+        <button type="button" class="btn btn--small magnetic" id="copyMail">Copy</button>
+      </div>
+
+      <div class="artifacts">
+        <p class="mono artifacts__label">Downloadable artifacts: pick the one that fits the role</p>
+        <a class="artifact" href="resume/Sham_Kumar_Senior_Mobile_Developer.pdf" download>
+          <span class="artifact__icon mono">PDF</span>
+          <span class="artifact__body">
+            <b>Senior Mobile Engineer</b>
+            <span>Android (Kotlin, Compose) · iOS (Swift, SwiftUI) · Flutter</span>
+            <i class="mono">Sham_Kumar_Senior_Mobile_Developer.pdf</i>
+          </span>
+          <span class="artifact__go" aria-hidden="true">↓</span>
+        </a>
+        <a class="artifact" href="resume/Sham_Kumar_iOS.pdf" download>
+          <span class="artifact__icon mono">PDF</span>
+          <span class="artifact__body">
+            <b>Senior iOS Engineer</b>
+            <span>Swift · SwiftUI · UIKit · Apple SDKs</span>
+            <i class="mono">Sham_Kumar_iOS.pdf</i>
+          </span>
+          <span class="artifact__go" aria-hidden="true">↓</span>
         </a>
       </div>
 
-      <div class="nav-menu" id="nav-menu">
-        <ul class="nav-list">
-          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-          <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-          <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
-          <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
-          <li class="nav-item"><a href="#recommendations" class="nav-link">Recommendations</a></li>
-          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      <div class="submit__grid">
+        <dl class="submit__facts mono">
+          <div><dt>Location</dt><dd>Pakistan · open to remote roles</dd></div>
+          <div><dt>Available for</dt><dd>Full-time remote · Freelance · Contract</dd></div>
+          <div><dt>Platforms</dt><dd>Android · iOS · Flutter</dd></div>
+        </dl>
+        <ul class="links">
+          <li><a href="https://www.linkedin.com/in/kumarsham/" target="_blank" rel="noopener"><span>LinkedIn</span><i>↗</i></a></li>
+          <li><a href="https://github.com/ShamKumarS" target="_blank" rel="noopener"><span>GitHub</span><i>↗</i></a></li>
+          <li><a href="https://stackoverflow.com/users/19195076/sham-kumar" target="_blank" rel="noopener"><span>Stack Overflow</span><i>↗</i></a></li>
+          <li><a href="https://medium.com/@sham_kumar" target="_blank" rel="noopener"><span>Medium</span><i>↗</i></a></li>
+          <li><a href="https://www.hackerrank.com/profile/shamkumar_cs17" target="_blank" rel="noopener"><span>HackerRank</span><i>↗</i></a></li>
         </ul>
       </div>
-
-      <div class="nav-toggle" id="nav-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="home" class="hero">
-    <div class="hero-orb"></div>
-    <div class="hero-container">
-      <div class="hero-content">
-
-        <!-- Hero Text -->
-        <div class="hero-text">
-          <div class="hero-badge">
-            <span class="badge-dot"></span>
-            Available for Remote Work
-          </div>
-
-          <div class="hero-greeting">
-            <span class="wave">👋</span>
-            Hi there, I'm
-          </div>
-
-          <h1 class="hero-title">
-            <span class="hero-name">Sham Kumar</span>
-            <span class="hero-surname">Meghwar</span>
-          </h1>
-
-          <div class="hero-subtitle">
-            <span class="typing-text">Senior iOS & Flutter Engineer</span>
-          </div>
-
-          <p class="hero-description">
-            Senior iOS & Flutter Engineer with around 5 years of experience delivering high-performance,
-            scalable mobile apps using Swift, SwiftUI, and Flutter. I design and ship
-            production-ready apps that users love.
-          </p>
-
-          <div class="hero-buttons">
-            <a href="#contact" class="btn btn-primary">
-              <i class="fas fa-paper-plane"></i>
-              Hire Me
-            </a>
-            <a href="Sham_Kumar.pdf" download="Sham_Kumar.pdf" class="btn btn-cv">
-              <i class="fas fa-download"></i>
-              Download CV
-            </a>
-            <a href="#projects" class="btn btn-outline">
-              View Work
-            </a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <div class="stat-num" data-target="5">0</div>
-              <div class="stat-lbl">Years Exp</div>
-            </div>
-            <div class="hero-stat">
-              <div class="stat-num" data-target="10">0</div>
-              <div class="stat-lbl">Projects Done</div>
-            </div>
-            <div class="hero-stat">
-              <div class="stat-num" data-target="5">0</div>
-              <div class="stat-lbl">Apps Published</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero Image -->
-        <div class="hero-image">
-          <div class="hero-image-wrapper">
-            <div class="hero-img-ring"></div>
-            <img src="img/profile_with_circle.jpg" alt="Sham Kumar Meghwar" class="hero-img">
-            <div class="hero-float-badge badge-ios">
-              <i class="fab fa-apple"></i> iOS Dev
-            </div>
-            <div class="hero-float-badge badge-flutter">
-              <i class="fab fa-flutter"></i> Flutter
-            </div>
-            <div class="hero-float-badge badge-swift">
-              <i class="fab fa-swift"></i> Swift
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Who I Am</div>
-        <h2 class="section-title">About Me</h2>
-        <p class="section-subtitle">Passionate about crafting mobile experiences that make a difference</p>
-      </div>
-
-      <div class="about-content">
-        <div class="about-text">
-          <p class="about-description">
-            Senior iOS & Flutter Engineer with 5+ years of experience delivering high-performance, scalable apps
-            in Swift, SwiftUI, and Flutter. I have a proven track record of building production-grade
-            applications, optimizing performance, and collaborating with cross-functional teams to ship
-            impactful features.
-          </p>
-          <p class="about-description">
-            Currently leading iOS delivery at <strong style="color: var(--primary)">Evolve Edge</strong>, building
-            <strong style="color: var(--primary)">OneAI Health</strong> — an AI-powered health platform — and owning
-            the product roadmap for <strong style="color: var(--primary)">Dry Revival</strong>. Previously helped
-            shape the <strong style="color: var(--primary)">KSC sports management app</strong> with strong UI/UX and
-            scalable architecture.
-          </p>
-          <p class="about-description">
-            Committed to continuous learning and actively contributing to the developer community on
-            Stack Overflow. Open to remote opportunities where I can keep learning, contribute
-            meaningfully, and help teams ship great products.
-          </p>
-
-          <div class="about-skills-preview">
-            <h3>Core Technologies</h3>
-            <div class="skill-tags">
-              <span class="skill-tag-pill">Swift</span>
-              <span class="skill-tag-pill">SwiftUI</span>
-              <span class="skill-tag-pill">UIKit</span>
-              <span class="skill-tag-pill">Flutter</span>
-              <span class="skill-tag-pill">Dart</span>
-              <span class="skill-tag-pill">Core Data</span>
-              <span class="skill-tag-pill">Combine</span>
-              <span class="skill-tag-pill">Firebase</span>
-              <span class="skill-tag-pill">MVVM</span>
-              <span class="skill-tag-pill">GraphQL</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="about-stats">
-          <div class="stat-item">
-            <span class="stat-number">5+</span>
-            <div class="stat-label">Years Experience</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">10+</span>
-            <div class="stat-label">Projects Completed</div>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">5+</span>
-            <div class="stat-label">Apps Published</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="skills-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What I Know</div>
-        <h2 class="section-title">My Skills</h2>
-        <p class="section-subtitle">Technologies and tools I work with every day</p>
-      </div>
-
-      <div class="skills-categories">
-
-        <!-- Languages -->
-        <div class="skill-category">
-          <div class="skill-category-title">Languages</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Swift">
-              <i class="fab fa-swift"></i><span>Swift</span>
-            </div>
-            <div class="skill-item" data-skill="Dart">
-              <i class="fas fa-terminal"></i><span>Dart</span>
-            </div>
-            <div class="skill-item" data-skill="Python">
-              <i class="fab fa-python"></i><span>Python</span>
-            </div>
-            <div class="skill-item" data-skill="Objective-C">
-              <i class="fas fa-code"></i><span>Objective-C</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- iOS / Apple SDK -->
-        <div class="skill-category">
-          <div class="skill-category-title">iOS / Apple SDK</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="SwiftUI">
-              <i class="fas fa-mobile-alt"></i><span>SwiftUI</span>
-            </div>
-            <div class="skill-item" data-skill="UIKit">
-              <i class="fas fa-layer-group"></i><span>UIKit</span>
-            </div>
-            <div class="skill-item" data-skill="SwiftData">
-              <i class="fas fa-database"></i><span>SwiftData</span>
-            </div>
-            <div class="skill-item" data-skill="Core Data">
-              <i class="fas fa-server"></i><span>Core Data</span>
-            </div>
-            <div class="skill-item" data-skill="AVFoundation">
-              <i class="fas fa-photo-video"></i><span>AVFoundation</span>
-            </div>
-            <div class="skill-item" data-skill="CoreBluetooth">
-              <i class="fab fa-bluetooth"></i><span>CoreBluetooth</span>
-            </div>
-            <div class="skill-item" data-skill="HealthKit">
-              <i class="fas fa-heartbeat"></i><span>HealthKit</span>
-            </div>
-            <div class="skill-item" data-skill="Swift Charts">
-              <i class="fas fa-chart-bar"></i><span>Swift Charts</span>
-            </div>
-            <div class="skill-item" data-skill="Core Location">
-              <i class="fas fa-location-arrow"></i><span>Core Location</span>
-            </div>
-            <div class="skill-item" data-skill="MapKit">
-              <i class="fas fa-map"></i><span>MapKit</span>
-            </div>
-            <div class="skill-item" data-skill="WidgetKit">
-              <i class="fas fa-th-large"></i><span>WidgetKit</span>
-            </div>
-            <div class="skill-item" data-skill="StoreKit 2">
-              <i class="fas fa-shopping-bag"></i><span>StoreKit 2</span>
-            </div>
-            <div class="skill-item" data-skill="Core Animation">
-              <i class="fas fa-film"></i><span>Core Animation</span>
-            </div>
-            <div class="skill-item" data-skill="EventKit">
-              <i class="fas fa-calendar-alt"></i><span>EventKit</span>
-            </div>
-            <div class="skill-item" data-skill="CloudKit">
-              <i class="fas fa-cloud"></i><span>CloudKit</span>
-            </div>
-            <div class="skill-item" data-skill="Cocoa Touch">
-              <i class="fas fa-hand-pointer"></i><span>Cocoa Touch</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Swift Concurrency -->
-        <div class="skill-category">
-          <div class="skill-category-title">Swift Concurrency</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="async/await">
-              <i class="fas fa-hourglass-half"></i><span>async/await</span>
-            </div>
-            <div class="skill-item" data-skill="actors">
-              <i class="fas fa-users-cog"></i><span>actors</span>
-            </div>
-            <div class="skill-item" data-skill="Combine">
-              <i class="fas fa-sync-alt"></i><span>Combine</span>
-            </div>
-            <div class="skill-item" data-skill="GCD">
-              <i class="fas fa-tasks"></i><span>GCD (GCD)</span>
-            </div>
-            <div class="skill-item" data-skill="Operation Queues">
-              <i class="fas fa-list-ol"></i><span>Operation Queues</span>
-            </div>
-            <div class="skill-item" data-skill="RxSwift">
-              <i class="fas fa-bolt"></i><span>RxSwift</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Architecture -->
-        <div class="skill-category">
-          <div class="skill-category-title">Architecture</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Clean Architecture">
-              <i class="fas fa-sitemap"></i><span>Clean Arch.</span>
-            </div>
-            <div class="skill-item" data-skill="MVVM-C">
-              <i class="fas fa-project-diagram"></i><span>MVVM-C</span>
-            </div>
-            <div class="skill-item" data-skill="MVVM">
-              <i class="fas fa-columns"></i><span>MVVM</span>
-            </div>
-            <div class="skill-item" data-skill="MVC">
-              <i class="fas fa-border-all"></i><span>MVC</span>
-            </div>
-            <div class="skill-item" data-skill="Protocol-Oriented Programming">
-              <i class="fas fa-code-branch"></i><span>POP</span>
-            </div>
-            <div class="skill-item" data-skill="Modular Architecture">
-              <i class="fas fa-boxes"></i><span>Modular Arch.</span>
-            </div>
-            <div class="skill-item" data-skill="Dependency Injection">
-              <i class="fas fa-syringe"></i><span>Dependency Inj.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Networking -->
-        <div class="skill-category">
-          <div class="skill-category-title">Networking</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="URLSession">
-              <i class="fas fa-network-wired"></i><span>URLSession</span>
-            </div>
-            <div class="skill-item" data-skill="Alamofire">
-              <i class="fas fa-satellite-dish"></i><span>Alamofire</span>
-            </div>
-            <div class="skill-item" data-skill="RESTful APIs">
-              <i class="fas fa-plug"></i><span>RESTful APIs</span>
-            </div>
-            <div class="skill-item" data-skill="GraphQL">
-              <i class="fas fa-project-diagram"></i><span>GraphQL</span>
-            </div>
-            <div class="skill-item" data-skill="WebSockets">
-              <i class="fas fa-wifi"></i><span>WebSockets</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- AI / ML -->
-        <div class="skill-category">
-          <div class="skill-category-title">AI / ML</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Core ML">
-              <i class="fas fa-brain"></i><span>Core ML</span>
-            </div>
-            <div class="skill-item" data-skill="Vision Framework">
-              <i class="fas fa-eye"></i><span>Vision Framework</span>
-            </div>
-            <div class="skill-item" data-skill="OpenAI API">
-              <i class="fas fa-robot"></i><span>OpenAI API</span>
-            </div>
-            <div class="skill-item" data-skill="on-device inference">
-              <i class="fas fa-microchip"></i><span>On-Device Inf.</span>
-            </div>
-            <div class="skill-item" data-skill="LLM integration">
-              <i class="fas fa-comments"></i><span>LLM Integration</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hardware & Wearables -->
-        <div class="skill-category">
-          <div class="skill-category-title">Hardware & Wearables</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Bluetooth 5.0 / BLE">
-              <i class="fab fa-bluetooth"></i><span>Bluetooth / BLE</span>
-            </div>
-            <div class="skill-item" data-skill="Lefu Smart Scale">
-              <i class="fas fa-weight"></i><span>Lefu Scale</span>
-            </div>
-            <div class="skill-item" data-skill="Ring & Ankle devices">
-              <i class="fas fa-ring"></i><span>Wearable Ring/Ankle</span>
-            </div>
-            <div class="skill-item" data-skill="IoT sensor integration">
-              <i class="fas fa-microchip"></i><span>IoT Sensors</span>
-            </div>
-            <div class="skill-item" data-skill="GATT protocol">
-              <i class="fas fa-exchange-alt"></i><span>GATT Protocol</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Flutter -->
-        <div class="skill-category">
-          <div class="skill-category-title">Flutter</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="BLoC">
-              <i class="fas fa-cubes"></i><span>BLoC</span>
-            </div>
-            <div class="skill-item" data-skill="Riverpod">
-              <i class="fas fa-water"></i><span>Riverpod</span>
-            </div>
-            <div class="skill-item" data-skill="GetIt DI">
-              <i class="fas fa-syringe"></i><span>GetIt DI</span>
-            </div>
-            <div class="skill-item" data-skill="GoRouter">
-              <i class="fas fa-route"></i><span>GoRouter</span>
-            </div>
-            <div class="skill-item" data-skill="Dio">
-              <i class="fas fa-satellite-dish"></i><span>Dio</span>
-            </div>
-            <div class="skill-item" data-skill="Freezed">
-              <i class="fas fa-snowflake"></i><span>Freezed</span>
-            </div>
-            <div class="skill-item" data-skill="Lottie">
-              <i class="fas fa-film"></i><span>Lottie</span>
-            </div>
-            <div class="skill-item" data-skill="Material/Cupertino UI">
-              <i class="fas fa-palette"></i><span>Material/Cupertino</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Testing & QA -->
-        <div class="skill-category">
-          <div class="skill-category-title">Testing & QA</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="XCTest">
-              <i class="fas fa-vial"></i><span>XCTest</span>
-            </div>
-            <div class="skill-item" data-skill="TDD">
-              <i class="fas fa-shield-alt"></i><span>TDD</span>
-            </div>
-            <div class="skill-item" data-skill="Unit Testing">
-              <i class="fas fa-check-double"></i><span>Unit Testing</span>
-            </div>
-            <div class="skill-item" data-skill="UI Testing">
-              <i class="fas fa-glasses"></i><span>UI Testing</span>
-            </div>
-            <div class="skill-item" data-skill="Instruments">
-              <i class="fas fa-tachometer-alt"></i><span>Instruments</span>
-            </div>
-            <div class="skill-item" data-skill="Memory & CPU Profiling">
-              <i class="fas fa-microchip"></i><span>Memory/CPU Profile</span>
-            </div>
-            <div class="skill-item" data-skill="Leak Detection">
-              <i class="fas fa-bug"></i><span>Leak Detection</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- CI/CD & Tooling -->
-        <div class="skill-category">
-          <div class="skill-category-title">CI/CD & Tooling</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Xcode">
-              <i class="fas fa-tools"></i><span>Xcode</span>
-            </div>
-            <div class="skill-item" data-skill="SPM">
-              <i class="fas fa-box-open"></i><span>SPM</span>
-            </div>
-            <div class="skill-item" data-skill="CocoaPods">
-              <i class="fas fa-box"></i><span>CocoaPods</span>
-            </div>
-            <div class="skill-item" data-skill="GitHub Actions">
-              <i class="fab fa-github"></i><span>GitHub Actions</span>
-            </div>
-            <div class="skill-item" data-skill="Fastlane">
-              <i class="fas fa-rocket"></i><span>Fastlane</span>
-            </div>
-            <div class="skill-item" data-skill="TestFlight">
-              <i class="fas fa-paper-plane"></i><span>TestFlight</span>
-            </div>
-            <div class="skill-item" data-skill="App Store Connect">
-              <i class="fab fa-apple"></i><span>App Store Connect</span>
-            </div>
-            <div class="skill-item" data-skill="Xcode Cloud">
-              <i class="fas fa-cloud-upload-alt"></i><span>Xcode Cloud</span>
-            </div>
-            <div class="skill-item" data-skill="Jira">
-              <i class="fab fa-jira"></i><span>Jira</span>
-            </div>
-            <div class="skill-item" data-skill="Scrum">
-              <i class="fas fa-sync"></i><span>Scrum</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Security -->
-        <div class="skill-category">
-          <div class="skill-category-title">Security</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Keychain">
-              <i class="fas fa-key"></i><span>Keychain</span>
-            </div>
-            <div class="skill-item" data-skill="SSL Pinning">
-              <i class="fas fa-lock"></i><span>SSL Pinning</span>
-            </div>
-            <div class="skill-item" data-skill="OWASP Mobile Top 10">
-              <i class="fas fa-shield-alt"></i><span>OWASP Mobile Top 10</span>
-            </div>
-            <div class="skill-item" data-skill="Pen-Test Remediation">
-              <i class="fas fa-user-shield"></i><span>Pen-Test Remediation</span>
-            </div>
-            <div class="skill-item" data-skill="HIPAA patterns">
-              <i class="fas fa-file-medical-alt"></i><span>HIPAA Patterns</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Payments & IAP -->
-        <div class="skill-category">
-          <div class="skill-category-title">Payments & IAP</div>
-          <div class="skills-grid">
-            <div class="skill-item" data-skill="Apple Pay">
-              <i class="fab fa-apple-pay"></i><span>Apple Pay</span>
-            </div>
-            <div class="skill-item" data-skill="Stripe">
-              <i class="fab fa-stripe"></i><span>Stripe</span>
-            </div>
-            <div class="skill-item" data-skill="VR Payment">
-              <i class="fas fa-vr-cardboard"></i><span>VR Payment</span>
-            </div>
-            <div class="skill-item" data-skill="In-App Purchases (StoreKit)">
-              <i class="fas fa-tag"></i><span>StoreKit Purchases</span>
-            </div>
-            <div class="skill-item" data-skill="In-App Subscriptions">
-              <i class="fas fa-receipt"></i><span>StoreKit Subscriptions</span>
-            </div>
-            <div class="skill-item" data-skill="APNs">
-              <i class="fas fa-bell"></i><span>APNs</span>
-            </div>
-            <div class="skill-item" data-skill="FCM">
-              <i class="fas fa-comment-alt"></i><span>FCM</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="experience">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Where I've Worked</div>
-        <h2 class="section-title">Work Experience</h2>
-        <p class="section-subtitle">My professional journey building mobile applications</p>
-      </div>
-
-      <div class="timeline">
-
-        <!-- Evolve Edge -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
-            <div class="timeline-icon">
-              <i class="fas fa-heartbeat"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Senior iOS Engineer</h3>
-              <div class="timeline-company">
-                Evolve Edge Technologies
-              </div>
-              <div class="timeline-date">December 2025 — Present &middot; Remote, Pakistan</div>
-            </div>
-            <div class="timeline-body">
-              <p style="font-style: italic; font-size: 0.82rem; margin-top: -6px; margin-bottom: 12px; color: var(--text-3);">
-                Part-time / Concurrent with ILI.DIGITAL (Dec 2025 – Apr 2026) &rarr; Full-Time (Apr 2026 – Present)
-              </p>
-
-              <div style="margin-top: 12px; margin-bottom: 8px;">
-                <strong>Dry Revival &mdash; Wellness &amp; Recovery App (iOS, App Store Live)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Sole iOS owner:</strong> architected and shipped the full product lifecycle &mdash; roadmap, Clean Architecture codebase, App Store Connect release cadence, and TestFlight beta distribution &mdash; reducing feature delivery time by 30% through modular, feature-isolated SwiftUI components.</li>
-                <li><strong>Hardware integration:</strong> integrated Lefu Smart Scale via Bluetooth to capture body measurement readings in real time, with trend graphs displaying progress over time using custom SwiftUI charts.</li>
-                <li><strong>Monetization:</strong> designed and launched In-App Subscriptions via StoreKit 2 with server-side receipt validation, paywall A/B experiments, and restore flows, directly enabling recurring revenue for the business.</li>
-                <li><strong>CI/CD:</strong> established GitHub Actions + Fastlane + TestFlight pipeline, cutting manual release overhead by ~40% and enabling continuous deployment to internal and beta testers.</li>
-              </ul>
-
-              <div style="margin-top: 16px; margin-bottom: 8px;">
-                <strong>OneAI Health &mdash; AI-Powered Healthcare App (iOS, Production)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Feature delivery:</strong> contributed iOS feature development for a full app redesign across 25+ screens in SwiftUI on a live HIPAA-regulated healthcare platform, working under the tech lead's architecture and direction.</li>
-                <li><strong>Health charts:</strong> designed and built custom SwiftUI charts for steps, calories, sleep, heart rate, and other health metrics, delivering clear visual trends that improved data comprehension for patients and care teams.</li>
-                <li><strong>Wearable integration:</strong> integrated Ring and ankle wearable devices to capture biometric readings, bridging hardware sensor data with the app's health tracking and AI insight pipeline.</li>
-                <li><strong>Security &amp; compliance:</strong> applied HIPAA-conscious patterns &mdash; Keychain storage, AES-encrypted Core Data persistence, SSL pinning, and CI/CD via GitHub Actions and TestFlight &mdash; across all assigned modules.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- ILI Digital -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
-            <div class="timeline-icon">
-              <i class="fas fa-briefcase"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Software Engineer &mdash; iOS &amp; Flutter</h3>
-              <div class="timeline-company">
-                <a href="https://ili.digital/" target="_blank">ILI.DIGITAL</a>
-              </div>
-              <div class="timeline-date">September 2023 — April 2026 &middot; Lahore, Pakistan (On-site)</div>
-            </div>
-            <div class="timeline-body">
-              <div style="margin-top: 12px; margin-bottom: 8px;">
-                <strong>KSC App &mdash; Event &amp; Commerce Platform (Swift/UIKit)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Performance:</strong> consolidated 7&ndash;8 API round-trips down to 1&ndash;2 via endpoint batching and URLSession caching, reducing average screen load time by ~60% and eliminating timeout errors reported in App Store reviews.</li>
-                <li><strong>Checkout:</strong> engineered one-tap MiniShop checkout with VR-Payment gateway integration and PCI-compliant token handling, increasing completed purchase rate and reducing cart abandonment.</li>
-                <li><strong>Offline access:</strong> implemented Core Data offline ticket storage with background sync, ensuring 100% feature availability for users in low-connectivity venue environments.</li>
-                <li><strong>Engagement:</strong> integrated Emarsys SDK for geolocation push notifications and deep linking, contributing to a 35% increase in user engagement over the following quarter.</li>
-                <li><strong>Security hardening:</strong> remediated SSL pinning gaps, token-handling vulnerabilities, and storage issues following external pen-test audit, achieving a clean security re-audit pass.</li>
-              </ul>
-
-              <div style="margin-top: 16px; margin-bottom: 8px;">
-                <strong>StayX &mdash; Gamification Learning App (Flutter)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Architecture:</strong> designed state management system using BLoC, GetIt dependency injection, and Freezed sealed classes, producing predictable, fully unit-tested game and learning flows.</li>
-                <li><strong>UX:</strong> integrated Dio interceptors for resilient API handling, GoRouter for typed navigation, and Lottie animations, delivering a polished gamified experience with zero navigation regressions post-launch.</li>
-                <li><strong>Team leadership:</strong> delivered 30% of total mobile development in a 5-person cross-functional team; led weekly code reviews, enforced TDD standards, and mentored 2 junior engineers &mdash; both promoted within 6 months.</li>
-              </ul>
-
-              <div style="margin-top: 16px; margin-bottom: 8px;">
-                <strong>Volocopter &mdash; Urban Air Mobility Booking App (iOS)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Architecture:</strong> owned flight booking API integration and Stripe payment flows using Clean Architecture with modular SDKs and zero-downtime Core Data migrations.</li>
-                <li><strong>Reusability:</strong> built a reusable SwiftUI component library shared across 3 feature teams, cutting UI development time by ~15% per sprint.</li>
-                <li><strong>Quality:</strong> authored XCTest unit and UI tests for all critical booking flows, achieving 85%+ test coverage on core modules and reducing QA regression cycles.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- BrainX -->
-        <div class="timeline-item">
-          <div class="timeline-marker">
-            <div class="timeline-icon">
-              <i class="fas fa-brain"></i>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Software Engineer &mdash; iOS</h3>
-              <div class="timeline-company">
-                <a href="https://www.brainxtech.com/" target="_blank">BrainX Technologies</a>
-              </div>
-              <div class="timeline-date">November 2021 — August 2023 &middot; Lahore, Pakistan (On-site)</div>
-            </div>
-            <div class="timeline-body">
-              <div style="margin-top: 12px; margin-bottom: 8px;">
-                <strong>Go Power App &mdash; Real-Time IoT Solar Energy Monitor</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>IoT integration:</strong> engineered real-time BLE 5.0 solar controller monitoring in Swift, optimizing GATT protocol communication to reduce data latency by ~35% and improve device sync reliability across intermittent connections.</li>
-                <li><strong>UX performance:</strong> redesigned core UI with memory management optimizations and async rendering, achieving a 20% improvement in user satisfaction scores per App Store feedback and QA benchmarks.</li>
-              </ul>
-
-              <div style="margin-top: 16px; margin-bottom: 8px;">
-                <strong>Driven Day &mdash; iOS Productivity Planner (UIKit / MVVM)</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Feature delivery:</strong> Delivered 50+ custom UIKit screens under strict MVVM architecture with Google Calendar and iCloud sync integration, driving a 35% boost in cross-platform engagement and a measurable increase in 30-day retention.</li>
-                <li><strong>Offline-first:</strong> Implemented task creation, file uploads, and progress tracking with offline-first Core Data persistence, reducing churn among power users by ensuring full functionality without connectivity.</li>
-              </ul>
-
-              <div style="margin-top: 16px; margin-bottom: 8px;">
-                <strong>Additional Projects</strong>
-              </div>
-              <ul class="timeline-list">
-                <li><strong>Feedback SDK:</strong> extended theming APIs with dynamic color support and improved developer documentation, increasing internal SDK adoption by 20% across 4 active projects.</li>
-                <li><strong>SHCD (Vehicle Marketplace):</strong> built image-based buy/sell listings with Stripe payment integration, improving checkout reliability and transaction success rate.</li>
-                <li><strong>BH4H (Mental Health):</strong> delivered a guided meditation app end-to-end with offline-first Core Data architecture using Swift &amp; UIKit.</li>
-                <li><strong>Baritastic (Objective-C):</strong> implemented full Spanish localization and multi-screen UI enhancements, expanding accessible user base.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What I've Built</div>
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle">A showcase of production apps and tools built with modern mobile technologies.</p>
-      </div>
-
-      <div class="projects-grid">
-
-        <!-- Dry Revival — Current Project -->
-        <div class="project-card featured" data-category="ios">
-          <span class="featured-badge">Current Project</span>
-          <div class="project-image">
-            <img src="img/Dry_Revival/Dashboard.png" alt="Dry Revival App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Dry Revival — Wellness and Recovery</h3>
-            <p class="project-description">
-              Led end-to-end iOS development of a modular SwiftUI app with Clean Architecture.
-              Delivered a full UI/UX revamp across 40+ screens, and implemented In-App Subscriptions
-              using StoreKit 2 with server-side validation.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">SwiftUI</span>
-              <span class="tech-tag">Clean Arch.</span>
-              <span class="tech-tag">StoreKit 2</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/us/app/dry-revival-app/id6471397467" target="_blank" class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- OneAI Health — Current Project -->
-        <div class="project-card featured" data-category="ios">
-          <span class="featured-badge">Current Project</span>
-          <div class="project-image">
-            <img src="img/OneAI/OneAI.jpeg" alt="OneAI Health App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">OneAI Health — AI Health Platform</h3>
-            <p class="project-description">
-              Production healthcare app on the App Store — AI-driven health insights, LLM-powered
-              data summaries, and a full UX redesign across 25+ screens. Built with SwiftUI,
-              HIPAA-conscious security patterns, and CI/CD via GitHub Actions.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">SwiftUI</span>
-              <span class="tech-tag">MVVM</span>
-              <span class="tech-tag">HealthKit</span>
-              <span class="tech-tag">AI/ML</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/us/app/oneai-health/id6503261405" target="_blank" class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- KSC -->
-        <div class="project-card" data-category="ios">
-          <div class="project-image">
-            <img src="img/KSC/1.PNG" alt="KSC App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">KSC — Sports Management Platform</h3>
-            <p class="project-description">
-              Complete app redesign and overhaul — rebuilding from the ground up in UIKit with
-              VR-Payment checkout, geolocation-triggered push notifications, offline ticket access,
-              and security hardening from pen-test findings.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">UIKit</span>
-              <span class="tech-tag">MVVM</span>
-              <span class="tech-tag">Socket.io</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/pk/app/ksc-app/id1417115202" target="_blank" class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- StayX -->
-        <div class="project-card" data-category="flutter">
-          <div class="project-image">
-            <img src="img/StayX/1.png" alt="StayX App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">StayX — Gamified Learning Platform</h3>
-            <p class="project-description">
-              Gamified microlearning app that transforms workplace training into an adventure.
-              Features interactive quizzes, avatar customization, team challenges, and achievement systems.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">Dart</span>
-              <span class="tech-tag">Provider</span>
-              <span class="tech-tag">Firebase</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/pk/app/stayx/id6746411124" target="_blank" class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Go Power -->
-        <div class="project-card" data-category="ios">
-          <div class="project-image">
-            <img src="img/GoPower/6.png" alt="Go Power App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Go Power — IoT Solar Controller</h3>
-            <p class="project-description">
-              IoT mobile app for solar controllers with Bluetooth connectivity, real-time data
-              monitoring, firmware updates, and comprehensive battery health tracking.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">CoreBluetooth</span>
-              <span class="tech-tag">BLE</span>
-              <span class="tech-tag">IoT</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/us/app/go-power-connect/id1414570273" target="_blank"
-                class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Driven Day -->
-        <div class="project-card" data-category="ios">
-          <div class="project-image">
-            <img src="img/Driven_Day/1.png" alt="Driven Day App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Driven Day — Digital Day Planner</h3>
-            <p class="project-description">
-              Digital planner with task management, smart reminders, calendar integration,
-              and document attachments. Offers both standard and religious planner modes.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">UIKit</span>
-              <span class="tech-tag">Core Data</span>
-              <span class="tech-tag">Push Notifications</span>
-            </div>
-            <div class="project-links">
-              <a href="https://www.drivenday.com/" target="_blank" class="project-link">
-                View Website <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- SHCD -->
-        <div class="project-card" data-category="ios">
-          <div class="project-image">
-            <img src="img/SHCD/1.webp" alt="SHCD App">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Second Hand Car Dealer — Marketplace</h3>
-            <p class="project-description">
-              Marketplace app for buying and selling pre-owned vehicles with advanced filters,
-              high-quality image galleries, and secure Stripe payment integration.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">UIKit</span>
-              <span class="tech-tag">Stripe</span>
-              <span class="tech-tag">Alamofire</span>
-            </div>
-            <div class="project-links">
-              <a href="https://apps.apple.com/pk/app/second-hand-car-dealr/id1622799017" target="_blank"
-                class="project-link">
-                App Store <i class="fab fa-app-store-ios"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Feedback SDK -->
-        <div class="project-card" data-category="ios">
-          <div class="project-image">
-            <img src="img/FeedbackSDK/1.png" alt="Feedback SDK">
-            <div class="project-image-overlay"></div>
-          </div>
-          <div class="project-content">
-            <h3 class="project-title">Feedback SDK — Multi-format Collection</h3>
-            <p class="project-description">
-              Private Swift package & CocoaPod for collecting user feedback in multiple formats:
-              text, audio, video, and images. Includes full localization support for easy integration.
-            </p>
-            <div class="project-tech">
-              <span class="tech-tag">Swift</span>
-              <span class="tech-tag">SDK</span>
-              <span class="tech-tag">CocoaPods</span>
-              <span class="tech-tag">Localization</span>
-            </div>
-            <div class="project-links">
-              <span class="project-link project-link-disabled">
-                <i class="fas fa-lock"></i> Private Package
-              </span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="education">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">My Background</div>
-        <h2 class="section-title">Education</h2>
-        <p class="section-subtitle">Academic foundation that drives my engineering approach</p>
-      </div>
-
-      <div class="education-timeline">
-        <div class="education-item">
-          <div class="education-date">2017 — 2021</div>
-          <div class="education-content">
-            <h3>Bachelor of Engineering in Computer Science</h3>
-            <p class="education-institution">Sukkur IBA University, Sindh, Pakistan</p>
-            <p class="education-description">
-              <b>Grade: A</b>
-              <br>
-              <b>Key Subjects:</b>
-            <ul>
-              <li>Data Structures</li>
-              <li>Data Mining</li>
-              <li>Data Science</li>
-              <li>Database Systems</li>
-              <li>Digital Image Processing</li>
-              <li>Artificial Intelligence</li>
-              <li>Object Oriented Programming</li>
-              <li>OOP & Design Patterns</li>
-              <li>Operating Systems</li>
-              <li>Algorithms</li>
-            </ul>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Recommendations Section -->
-  <section id="recommendations" class="recommendations">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">What They Say</div>
-        <h2 class="section-title">Recommendations</h2>
-        <p class="section-subtitle">LinkedIn recommendations from colleagues and team leads</p>
-        <div class="linkedin-link">
-          <a href="https://www.linkedin.com/in/kumarsham/details/recommendations/?detailScreenTabIndex=0"
-            target="_blank" class="btn btn-outline">
-            <i class="fab fa-linkedin"></i>
-            View All on LinkedIn
-          </a>
-        </div>
-      </div>
-
-      <div class="recommendations-grid">
-
-        <div class="recommendation-card" onclick="openLinkedInProfile('pascal-scherrer')">
-          <div class="recommendation-header">
-            <div class="recommendation-author">
-              <div class="author-avatar">
-                <img src="img/Colleagues/pascal.jpeg" alt="Pascal Scherrer" class="avatar-img">
-              </div>
-              <div class="author-info">
-                <h4>Pascal Scherrer</h4>
-                <p>Senior Developer & Projektleiter</p>
-                <span class="recommendation-date">April 2025</span>
-              </div>
-            </div>
-            <div class="linkedin-badge"><i class="fab fa-linkedin"></i></div>
-          </div>
-          <div class="recommendation-content">
-            <p>"Sham made a significant contribution to the success of the KSC App by implementing both the design and
-              core functionalities with high precision and creativity.</p>
-            <p>His ability to translate UI/UX designs into responsive, user-friendly interfaces is outstanding.
-              Moreover, he is highly reliable, quick to understand requirements, and proactive in finding efficient and
-              elegant solutions.</p>
-            <p>I highly recommend Sham for any frontend development role, especially where a good sense for design and
-              additional backend knowledge are valued."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card" onclick="openLinkedInProfile('mahmoud-aoata')">
-          <div class="recommendation-header">
-            <div class="recommendation-author">
-              <div class="author-avatar">
-                <img src="img/Colleagues/Mahmoud.jpeg" alt="Mahmoud Aoata" class="avatar-img">
-              </div>
-              <div class="author-info">
-                <h4>Mahmoud Aoata</h4>
-                <p>Software Engineer | Mobile Lead</p>
-                <span class="recommendation-date">July 2024</span>
-              </div>
-            </div>
-            <div class="linkedin-badge"><i class="fab fa-linkedin"></i></div>
-          </div>
-          <div class="recommendation-content">
-            <p>"Sham has showcased exceptional skill and dedication, particularly in developing our flight booking app.
-              His expertise in iOS development is reflected in the app's intuitive design and robust functionality.</p>
-            <p>Beyond his technical capabilities, Sham's friendly personality and open mindset make him a joy to work
-              with. He is always receptive to feedback and constantly strives to improve both his work and the overall
-              project."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card" onclick="openLinkedInProfile('konrad-schmid')">
-          <div class="recommendation-header">
-            <div class="recommendation-author">
-              <div class="author-avatar">
-                <img src="img/Colleagues/Konrad.jpeg" alt="Konrad Schmid" class="avatar-img">
-              </div>
-              <div class="author-info">
-                <h4>Konrad Schmid</h4>
-                <p>iOS Developer at Helsana</p>
-                <span class="recommendation-date">January 2024</span>
-              </div>
-            </div>
-            <div class="linkedin-badge"><i class="fab fa-linkedin"></i></div>
-          </div>
-          <div class="recommendation-content">
-            <p>"I highly recommend Sham as an iOS developer. I had the pleasure of working closely with him on the
-              Volocopter Customer App, and his technical expertise and commitment to delivering high-quality solutions
-              are truly commendable.</p>
-            <p>Sham's ability to tackle complex requirements and his positive, collaborative approach make him a
-              valuable asset to any team. I'm confident that Sham's skills and dedication will greatly contribute to the
-              success of any iOS project."</p>
-          </div>
-        </div>
-
-        <div class="recommendation-card" onclick="openLinkedInProfile('paalo-dewitz')">
-          <div class="recommendation-header">
-            <div class="recommendation-author">
-              <div class="author-avatar">
-                <img src="img/Colleagues/Paalo.jpeg" alt="Paalo Dewitz" class="avatar-img">
-              </div>
-              <div class="author-info">
-                <h4>Paalo Dewitz</h4>
-                <p>Head of Product Customization</p>
-                <span class="recommendation-date">January 2024</span>
-              </div>
-            </div>
-            <div class="linkedin-badge"><i class="fab fa-linkedin"></i></div>
-          </div>
-          <div class="recommendation-content">
-            <p>"I had the chance to work with Sham within my time at Volocopter to create the future customer app. Sham
-              was always polite and really focused on getting things done and find solutions above what was requested.
-            </p>
-            <p>I would recommend him to everyone searching for a good character & a reliable developer!"</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-label">Let's Talk</div>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle">Open to remote opportunities, freelance projects, and exciting collaborations</p>
-      </div>
-
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div class="contact-details">
-              <h4>Email</h4>
-              <p>ksham1999@gmail.com</p>
-              <a href="mailto:ksham1999@gmail.com" class="contact-link">
-                Send a Message <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="contact-details">
-              <h4>Location</h4>
-              <p>Pakistan (Remote-friendly)</p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-briefcase"></i></div>
-            <div class="contact-details">
-              <h4>Available For</h4>
-              <p>Full-time Remote · Freelance · Contract</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="social-links">
-          <h3>Connect With Me</h3>
-          <div class="social-grid">
-            <a href="https://www.linkedin.com/in/kumarsham/" target="_blank" class="social-link">
-              <i class="fab fa-linkedin"></i>
-              <span>LinkedIn</span>
-            </a>
-            <a href="https://github.com/ShamKumarS" target="_blank" class="social-link">
-              <i class="fab fa-github"></i>
-              <span>GitHub</span>
-            </a>
-            <a href="https://stackoverflow.com/users/19195076/sham-kumar" target="_blank" class="social-link">
-              <i class="fab fa-stack-overflow"></i>
-              <span>Stack Overflow</span>
-            </a>
-            <a href="https://medium.com/@sham_kumar" target="_blank" class="social-link">
-              <i class="fab fa-medium"></i>
-              <span>Medium</span>
-            </a>
-            <a href="https://www.hackerrank.com/profile/shamkumar_cs17" target="_blank" class="social-link">
-              <i class="fab fa-hackerrank"></i>
-              <span>HackerRank</span>
-            </a>
-            <a href="mailto:ksham1999@gmail.com" class="social-link">
-              <i class="fas fa-envelope"></i>
-              <span>Email Me</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-text">
-          <p>&copy; 2025 <span>Sham Kumar Meghwar</span>. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
+    </section>
+  </main>
+
+  <footer class="foot mono">
+    <span>© <span id="year">2026</span> Sham Kumar Meghwar</span>
+    <span class="foot__ok">** BUILD SUCCEEDED ** · android-arm64 · ios-arm64</span>
+    <a href="#top">Back to top ↑</a>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/resume.js"></script>
+  <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="assets/app.js" defer></script>
 </body>
-
 </html>
