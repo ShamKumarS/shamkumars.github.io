@@ -308,7 +308,7 @@
   const rot = $('#rotator');
   const nb = (s) => s.replace(/ /g, '\u00a0');
   const WORDS = {
-    all: ['OneAI Health', 'Android & iOS in parity', 'Dry Revival', 'BLE integrations', 'Flutter apps'],
+    all: ['OneAI Health', 'Android & iOS in parity', 'Dry Revival', 'CareOS in React Native', 'BLE integrations', 'Flutter apps'],
     android: ['Jetpack Compose screens', 'CameraX + ML Kit scanning', 'Health Connect data', 'Play Store releases'],
     ios: ['SwiftUI charts', 'Dry Revival', 'StoreKit 2 paywalls', 'HealthKit integrations'],
     flutter: ['StayX', 'BLoC architectures', 'one codebase, two stores'],
