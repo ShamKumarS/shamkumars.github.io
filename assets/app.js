@@ -61,7 +61,7 @@
 
   /* ───────── Theme ───────── */
   const themeMeta = $('meta[name="theme-color"]');
-  const applyThemeMeta = () => { themeMeta.content = root.dataset.theme === 'dark' ? '#0d0d0b' : '#efebe3'; };
+  const applyThemeMeta = () => { themeMeta.content = root.dataset.theme === 'dark' ? '#05060f' : '#f5f6fb'; };
   applyThemeMeta();
   $('#themeToggle').addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -173,12 +173,20 @@
 
     let W = 0, H = 0, dpr = 1, pts = [], visible = true, t = 0, settled = false;
     const mouse = { x: -9999, y: -9999, active: false };
-    let ink = '#fff', accent = '#f60';
+    let ink = '#fff', accent = '#f60', g = ['#c084fc', '#818cf8', '#22d3ee'], fill = '#fff';
 
     const readColors = () => {
       const cs = getComputedStyle(root);
       ink = cs.getPropertyValue('--ink').trim();
-      accent = cs.getPropertyValue('--accent').trim();
+      accent = cs.getPropertyValue('--hot').trim() || cs.getPropertyValue('--accent').trim();
+      g = ['--g1', '--g2', '--g3'].map((v) => cs.getPropertyValue(v).trim());
+      makeFill();
+    };
+    const makeFill = () => {
+      if (!W) { fill = ink; return; }
+      const lg = ctx.createLinearGradient(0, 0, W, H);
+      lg.addColorStop(0, g[0]); lg.addColorStop(0.5, g[1]); lg.addColorStop(1, g[2]);
+      fill = lg;
     };
 
     const build = (scatter) => {
@@ -187,12 +195,13 @@
       dpr = Math.min(devicePixelRatio || 1, 2);
       canvas.width = W * dpr; canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      makeFill();
 
       const lines = W < 720 ? ['SHAM', 'KUMAR'] : ['SHAM KUMAR'];
       const off = document.createElement('canvas');
       off.width = Math.ceil(W); off.height = Math.ceil(H);
       const o = off.getContext('2d');
-      const family = '"Bricolage Grotesque", system-ui, sans-serif';
+      const family = '"Sora", system-ui, sans-serif';
       o.font = `800 100px ${family}`;
       const widest = Math.max(...lines.map((l) => o.measureText(l).width));
       let size = 100 * (W * 0.98) / widest;
@@ -241,7 +250,7 @@
       const rad = R(), rad2 = rad * rad;
       const band = (t * 3) % (W + 400) - 200; // sweeping "compile" highlight
       let moving = 0;
-      ctx.fillStyle = ink;
+      ctx.fillStyle = fill;
       ctx.beginPath();
       const hot = [];
       for (let i = 0; i < pts.length; i++) {
@@ -308,7 +317,7 @@
   const rot = $('#rotator');
   const nb = (s) => s.replace(/ /g, '\u00a0');
   const WORDS = {
-    all: ['OneAI Health', 'Android & iOS in parity', 'Dry Revival', 'BLE integrations', 'Flutter apps'],
+    all: ['OneAI Health', 'Android & iOS in parity', 'Dry Revival', 'CareOS in React Native', 'BLE integrations', 'Flutter apps'],
     android: ['Jetpack Compose screens', 'CameraX + ML Kit scanning', 'Health Connect data', 'Play Store releases'],
     ios: ['SwiftUI charts', 'Dry Revival', 'StoreKit 2 paywalls', 'HealthKit integrations'],
     flutter: ['StayX', 'BLoC architectures', 'one codebase, two stores'],
@@ -622,6 +631,21 @@
     stack.addEventListener('pointercancel', end);
     paint();
   })();
+
+  /* ───────── Card spotlight ───────── */
+  if (matchMedia('(hover: hover)').matches) {
+    const SPOT = '.idcard, .notes__list li, .product, .build, .review, .artifact, .fw__groups, .cl__sticky, .submit__mail, .rv__score';
+    let last = null;
+    document.addEventListener('pointermove', (e) => {
+      const el = e.target.closest && e.target.closest(SPOT);
+      if (last && last !== el) { last.style.removeProperty('--mx'); last.style.removeProperty('--my'); }
+      last = el;
+      if (!el) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      el.style.setProperty('--my', `${e.clientY - r.top}px`);
+    }, { passive: true });
+  }
 
   setPlatform(root.dataset.platform, true);
 

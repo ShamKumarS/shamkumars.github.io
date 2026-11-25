@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sham Kumar — Release Notes</title>
   <meta name="description" content="Sham Kumar Meghwar — Senior Mobile Engineer shipping native Android (Kotlin, Jetpack Compose), iOS (Swift, SwiftUI) and Flutter apps. 5+ years across healthcare, IoT, fintech, e-commerce and mobility.">
-  <meta name="keywords" content="Mobile Engineer, Android Developer, iOS Developer, Flutter Developer, Kotlin, Jetpack Compose, Swift, SwiftUI, Remote Developer, Freelance">
+  <meta name="keywords" content="Mobile Engineer, Android Developer, iOS Developer, Flutter Developer, React Native Developer, Kotlin, Jetpack Compose, Swift, SwiftUI, Remote Developer, Freelance">
   <meta name="author" content="Sham Kumar Meghwar">
   <meta property="og:title" content="Sham Kumar — Senior Mobile Engineer (Android · iOS · Flutter)">
   <meta property="og:description" content="Native Android and iOS, plus Flutter when one codebase fits. 5+ years shipping production mobile apps.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://shamkumars.github.io/">
   <meta property="og:image" content="https://shamkumars.github.io/assets/profile.jpg">
-  <meta name="theme-color" content="#0d0d0b">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23ff5a2a'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='34' text-anchor='middle' fill='%230d0d0b'%3ESK%3C/text%3E%3C/svg%3E">
+  <meta name="theme-color" content="#05060f">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23c084fc'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='32' fill='url(%23g)'/%3E%3Ctext x='32' y='45' font-family='Arial Black,Arial' font-weight='900' font-size='26' text-anchor='middle' fill='%23ffffff'%3ESK%3C/text%3E%3C/svg%3E">
   <script>
     try {
       var t = localStorage.getItem('sk-theme'); if (t) document.documentElement.dataset.theme = t;
@@ -22,7 +22,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -37,7 +37,7 @@
   </div>
 
   <div class="cursor" id="cursor" aria-hidden="true"><span></span></div>
-  <div class="grain" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 
   <!-- ───────── Toolbar ───────── -->
   <header class="bar" id="bar">
@@ -65,8 +65,11 @@
           <a href="resume/Sham_Kumar_Senior_Mobile_Developer.pdf" download>
             <b>Mobile Engineer</b><span>Android · iOS · Flutter</span><i class="mono">PDF ↓</i>
           </a>
-          <a href="resume/Sham_Kumar_iOS.pdf" download>
+          <a href="resume/Sham_Kumar_iOS_Engineer.pdf" download>
             <b>iOS Engineer</b><span>Swift · SwiftUI · UIKit</span><i class="mono">PDF ↓</i>
+          </a>
+          <a href="resume/Sham_Kumar_Flutter_Developer.pdf" download>
+            <b>Flutter Developer</b><span>Flutter · Dart · React Native</span><i class="mono">PDF ↓</i>
           </a>
         </div>
       </details>
@@ -133,7 +136,13 @@
         <aside class="notes__card" data-reveal>
           <div class="idcard" id="idcard">
             <div class="idcard__top mono"><span>Developer ID</span><span>●&nbsp;Verified</span></div>
-            <img src="assets/profile.jpg" alt="Portrait of Sham Kumar Meghwar" width="640" height="640" loading="lazy">
+            <div class="avatar">
+              <span class="avatar__ring" aria-hidden="true"></span>
+              <span class="avatar__disc">
+                <img src="assets/profile-cutout.png" alt="Portrait of Sham Kumar Meghwar" width="720" height="720" loading="lazy">
+              </span>
+              <span class="avatar__badge" aria-hidden="true">5+ yrs</span>
+            </div>
             <div class="idcard__body">
               <strong>Sham Kumar Meghwar</strong>
               <span>Senior Mobile Engineer · Evolve Edge</span>
@@ -151,7 +160,7 @@
         <ol class="notes__list">
           <li data-reveal>
             <h3>Now shipping Android <em>and</em> iOS at Evolve Edge</h3>
-            <p>I own feature delivery on both platforms of <b>OneAI Health</b>, a production healthcare product: Kotlin and Jetpack Compose on Android, SwiftUI on iOS, kept in feature parity. I also lead <b>Dry Revival</b> end to end on iOS.</p>
+            <p>I own feature delivery on both platforms of <b>OneAI Health</b>, a production healthcare product: Kotlin and Jetpack Compose on Android, SwiftUI on iOS, kept in feature parity. I also lead <b>Dry Revival</b> end to end on iOS and build patient features for <b>CareOS</b> in React Native.</p>
           </li>
           <li data-reveal>
             <h3>One engineer, three platforms</h3>
@@ -207,7 +216,7 @@
           <div class="fw__src" data-group="Android" data-p="a">Android SDK, Android Studio, Jetpack Compose, Navigation, ViewModel, Lifecycle, Material 3, Coroutines / Flow, Retrofit / OkHttp, Koin DI, kotlinx.serialization, Gson, CameraX, ML Kit, Health Connect, BiometricPrompt</div>
           <div class="fw__src" data-group="iOS / Apple SDK" data-p="i">SwiftUI, UIKit, Xcode, Core Data, SwiftData, AVFoundation, Vision, HealthKit, StoreKit 2, WidgetKit, TipKit, CoreBluetooth, Core Location, MapKit, Swift Charts, Core Animation, EventKit, CloudKit, Face ID / Touch ID</div>
           <div class="fw__src" data-group="Concurrency" data-p="i">Coroutines / Flow|a, Swift Concurrency, async/await, Actors, Combine, RxSwift, GCD, Operation Queues</div>
-          <div class="fw__src" data-group="Flutter" data-p="f">Flutter, BLoC, Riverpod, GetIt DI, GoRouter, Dio, Freezed, Lottie, Material / Cupertino</div>
+          <div class="fw__src" data-group="Cross-Platform" data-p="f">Flutter, BLoC, Riverpod, GetIt DI, GoRouter, Dio, Freezed, Lottie, Material / Cupertino, React Native|aif</div>
           <div class="fw__src" data-group="Architecture" data-p="aif">Clean Architecture, MVVM, MVVM-C|i, VIPER|i, MVP, MVC, Modular SDKs, Dependency Injection, Offline-first data layer, Repository pattern</div>
           <div class="fw__src" data-group="Device Integration" data-p="aif">Barcode &amp; QR, Camera capture, Face detection, Biometric auth, GPS &amp; Location, Google Maps|a, Bluetooth / BLE (GATT), Smart scales, Wearables, IoT sensors</div>
           <div class="fw__src" data-group="Data &amp; Networking" data-p="aif">REST APIs, JSON, GraphQL, WebSockets, OpenAPI, Offline sync, Caching, Background sync, URLSession|i, Alamofire|i</div>
@@ -251,7 +260,7 @@
               <ul>
                 <li><b class="t t--ship">Android</b><span><strong>Android ownership.</strong> I develop, maintain and optimize the Android app in Kotlin and Jetpack Compose on MVVM/Clean Architecture with Coroutines/Flow, Retrofit/OkHttp and Koin DI, keeping it in feature parity with iOS.</span></li>
                 <li><b class="t t--ship">Shipped</b><span><strong>Cross-platform delivery.</strong> Features across <em class="m">35+ SwiftUI screens</em> and their Compose counterparts, turning Figma and business requirements into reliable mobile solutions with the tech lead, backend, QA and design.</span></li>
-                <li><b class="t t--add">Added</b><span><strong>Device &amp; sensors.</strong> Barcode/QR scanning (CameraX + ML Kit, AVFoundation), camera capture with on-device face detection (ML Kit, Vision), GPS (Fused Location, Core Location), BLE wearables, and Health Connect / HealthKit.</span></li>
+                <li><b class="t t--add">Added</b><span><strong>Device &amp; sensors.</strong> Barcode/QR scanning (CameraX + ML Kit, AVFoundation), camera capture with on-device face detection (ML Kit, Vision), GPS (Fused Location, Core Location), ring and ankle BLE wearables feeding the AI insight pipeline, and Health Connect / HealthKit.</span></li>
                 <li><b class="t t--add">Added</b><span><strong>Backend integration.</strong> REST APIs from the OpenAPI contract with lenient JSON decoding, token refresh/rotation and caching for intermittent connectivity. Custom charts for steps, sleep, heart rate and HRV.</span></li>
                 <li><b class="t t--imp">Improved</b><span><strong>CI/CD.</strong> GitHub Actions builds and tests every PR, Firebase App Distribution handles dev builds, and releases are promoted through Google Play internal/beta/production tracks, with TestFlight and App Store Connect on iOS.</span></li>
                 <li><b class="t t--sec">Secured</b><span><strong>Quality &amp; security.</strong> JUnit, MockK, Turbine and MockWebServer tests, Sentry monitoring, plus secure storage, encrypted data and SSL pinning following OWASP Mobile and HIPAA practices.</span></li>
@@ -264,6 +273,13 @@
                 <li><b class="t t--ship">Shipped</b><span><strong>Ownership.</strong> I lead end-to-end development with SwiftUI and Clean Architecture, managing App Store releases and TestFlight distribution.</span></li>
                 <li><b class="t t--add">Added</b><span><strong>Hardware.</strong> Integrated the Lefu Smart Scale over Bluetooth LE to capture real-time body measurements and visualize progress in custom charts.</span></li>
                 <li><b class="t t--add">Added</b><span><strong>Monetization.</strong> StoreKit 2 subscriptions, server-side receipt validation, paywall flows and purchase restoration to support recurring revenue.</span></li>
+              </ul>
+            </div>
+
+            <div class="product" data-reveal>
+              <h4>CareOS <small>Patient app · React Native · Android &amp; iOS</small></h4>
+              <ul>
+                <li><b class="t t--ship">Shipped</b><span><strong>Cross-platform.</strong> I build patient-facing features for the CareOS iOS and Android apps from a single React Native codebase.</span></li>
               </ul>
             </div>
           </article>
@@ -542,12 +558,21 @@
           </span>
           <span class="artifact__go" aria-hidden="true">↓</span>
         </a>
-        <a class="artifact" href="resume/Sham_Kumar_iOS.pdf" download>
+        <a class="artifact" href="resume/Sham_Kumar_iOS_Engineer.pdf" download>
           <span class="artifact__icon mono">PDF</span>
           <span class="artifact__body">
             <b>Senior iOS Engineer</b>
             <span>Swift · SwiftUI · UIKit · Apple SDKs</span>
-            <i class="mono">Sham_Kumar_iOS.pdf</i>
+            <i class="mono">Sham_Kumar_iOS_Engineer.pdf</i>
+          </span>
+          <span class="artifact__go" aria-hidden="true">↓</span>
+        </a>
+        <a class="artifact" href="resume/Sham_Kumar_Flutter_Developer.pdf" download>
+          <span class="artifact__icon mono">PDF</span>
+          <span class="artifact__body">
+            <b>Flutter &amp; Cross-Platform</b>
+            <span>Flutter · Dart · BLoC · React Native</span>
+            <i class="mono">Sham_Kumar_Flutter_Developer.pdf</i>
           </span>
           <span class="artifact__go" aria-hidden="true">↓</span>
         </a>
